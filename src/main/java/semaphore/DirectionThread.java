@@ -1,4 +1,4 @@
-import java.util.concurrent.Semaphore;
+package semaphore;
 
 public class DirectionThread implements Runnable{
     String direction = "";
@@ -11,9 +11,10 @@ public class DirectionThread implements Runnable{
     public void run() {
         try {
             while(!Thread.interrupted()) {
-                Thread.sleep(200);
+                Test.output(direction, true);
+                Thread.sleep((long)(Math.abs(Math.random())*1000));
                 Thread.yield();
-                Test.output("Masina in directia " + direction);
+                Test.output(direction, false);
             }
             if(Thread.interrupted()) throw new InterruptedException();
         }
@@ -22,5 +23,4 @@ public class DirectionThread implements Runnable{
         }
     }
 }
-
 
